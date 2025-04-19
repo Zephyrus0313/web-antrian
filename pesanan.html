@@ -12,21 +12,8 @@
     <div id="detail-pesanan"></div>
   </div>
 
-  <script>
-    const pesananTerakhir = JSON.parse(localStorage.getItem("pesananList") || "[]").slice(-1)[0];
-
-    const container = document.getElementById("detail-pesanan");
-
-    if (pesananTerakhir) {
-      container.innerHTML = `
-        <p>Nomor Antrian: <strong>${pesananTerakhir.nomor}</strong></p>
-        <p>Waktu Pesan: ${pesananTerakhir.jam}</p>
-        <p>Status: <strong>${pesananTerakhir.status}</strong></p>
-        <ul>${pesananTerakhir.menu.map(m => `<li>${m}</li>`).join("")}</ul>
-      `;
-    } else {
-      container.innerHTML = `<p>Tidak ada pesanan ditemukan.</p>`;
-    }
-  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
