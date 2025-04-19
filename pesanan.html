@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pesanan Anda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="pesanan-container">
+    <h1>Pesanan Anda</h1>
+    <div id="detail-pesanan"></div>
+  </div>
+
+  <script>
+    const pesananTerakhir = JSON.parse(localStorage.getItem("pesananList") || "[]").slice(-1)[0];
+
+    const container = document.getElementById("detail-pesanan");
+
+    if (pesananTerakhir) {
+      container.innerHTML = `
+        <p>Nomor Antrian: <strong>${pesananTerakhir.nomor}</strong></p>
+        <p>Waktu Pesan: ${pesananTerakhir.jam}</p>
+        <p>Status: <strong>${pesananTerakhir.status}</strong></p>
+        <ul>${pesananTerakhir.menu.map(m => `<li>${m}</li>`).join("")}</ul>
+      `;
+    } else {
+      container.innerHTML = `<p>Tidak ada pesanan ditemukan.</p>`;
+    }
+  </script>
+</body>
+</html>
